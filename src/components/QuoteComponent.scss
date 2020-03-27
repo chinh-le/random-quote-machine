@@ -1,0 +1,48 @@
+.rnd-quote__body{
+    height: 230px;
+    margin-bottom: 1px;
+}
+.rnd-quote__title{
+    width: 80%;
+    height: 50%;
+    font-family: Titillium Web, Helvetica, sans-serif;
+    font-size: 1.6rem !important;
+}
+.rnd-quote__text{
+    font-size: 2rem;
+}
+.rnd-quote__text--icon-color{
+    color: rgba(0,0,0,0.1);
+}
+.rnd-quote__author{
+    width: 80%;
+}
+.rnd-quote__author--text-color{
+    color: rgba(0,0,0,0.3);
+}
+
+// transition: fade
+.rnd-quote__title--fade,
+.rnd-quote__author--fade{
+    &.enter{
+        opacity: 0;
+    }
+    &.enter-active{
+        opacity: 1;
+        transition: opacity 500ms;
+    }
+    &.enter-done{
+        opacity: 1;
+    }
+    &.exit{
+        opacity: 1;
+    }
+    &.exit-active{
+        opacity: 0;
+        transition: opacity 300ms;
+    }
+    &.exit-done{
+        opacity: 0;
+    }
+}
+
