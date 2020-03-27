@@ -38,7 +38,6 @@ class QuoteComponent extends React.Component {
     this.intervalBg = null;
     this.timeoutBg = null;
     this.bgColor = getRandomColor();
-    // this.tweetUrl = 'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=';
     // this.wrapper = React.createRef();
   }
 
@@ -49,8 +48,8 @@ class QuoteComponent extends React.Component {
           fade: prevState.fade
         };
     });
-    this.setRandomQuote();
-    this.changeRandomBg();
+    this.autoChangeQuote();
+    this.autoChangeBg();
   }
 
   componentWillUnmount(){
@@ -59,7 +58,7 @@ class QuoteComponent extends React.Component {
     clearTimeout(this.timeout);
   }
 
-  setRandomQuote(){
+  autoChangeQuote(){
     this.interval = setInterval(() => {
       this.setState((prevState, props) => {
         return {
@@ -92,16 +91,16 @@ class QuoteComponent extends React.Component {
       };
     });
     this.changeQuote();
-    this.changeBb();
+    this.changeBg();
   }
 
-  changeRandomBg(){
+  autoChangeBg(){
     this.intervalBg = setInterval(() => {
       this.bgColor = getRandomColor();
     }, 5000);
   }
 
-  changeBb(){
+  changeBg(){
     this.timeoutBg = setTimeout(() => {
       this.bgColor = getRandomColor();
     }, 500);
@@ -124,26 +123,23 @@ class QuoteComponent extends React.Component {
         <Container fluid id="quote-box" className={containerBgColor}>
           <Col sm={9} md={7} lg={5} xl={4} className="m-auto">
             <Card bg="transparent" border="0" className="rnd-quote p-4">
-              <Card.Body className="rnd-quote__body d-flex flex-column justify-content-center">
-                <Card.Text className="rnd-quote__text mx-auto text-light m-0"><FontAwesomeIcon icon={faQuoteLeft} /></Card.Text>
-                  <Card.Title className="rnd-quote__title d-flex flex-row align-items-center mx-auto mb-0">
+              <Card.Body className="rnd-quote__body d-flex flex-column justify-content-center bg-white py-4 rounded-top">
+                <Card.Text className="rnd-quote__text rnd-quote__text--icon-color mx-auto my-0"><FontAwesomeIcon icon={faQuoteLeft} /></Card.Text>
+                  <Card.Title className="rnd-quote__title d-flex flex-row align-items-center mx-auto mb-0 text-dark">
                     <CSSTransition in={this.state.fade} timeout={500} className="rnd-quote__title--fade">
                       <span>{this.state.quote.text}</span>
                     </CSSTransition>
                   </Card.Title>
-                <Card.Text className="rnd-quote__text mx-auto text-right text-light"><FontAwesomeIcon icon={faQuoteRight} /></Card.Text>
-              </Card.Body>
-              <Card.Footer className="rnd-quote__footer mx-auto bg-transparent border-0">
-                <Card.Text className="d-flex flex-column align-items-end text-light">
+                <Card.Text className="rnd-quote__text rnd-quote__text--icon-color mx-auto my-0"><FontAwesomeIcon icon={faQuoteRight} /></Card.Text>
+                <Card.Text className="rnd-quote__author rnd-quote__author--text-color mx-auto">
                   <CSSTransition in={this.state.fade} timeout={200} className="rnd-quote__author--fade">
                     <span>{this.state.quote.author}</span>
                   </CSSTransition>
                 </Card.Text>
-              </Card.Footer>
-              <Card.Footer className="rnd-quote__footer d-flex justify-content-center mx-auto bg-transparent border-0">
-                {/* <Button variant="light" className="mx-1" id="tweet-quote"><FontAwesomeIcon icon={faTwitter} /></Button> */}
-                <a className="btn btn-light mx-1" href={tweetUrl} target="_blank" title="Tweet this quote!"><FontAwesomeIcon icon={faTwitter} /></a>
-                <Button variant="light" className="mx-1" id="new-quote" onClick={this.getQuote}>New Quote</Button>
+              </Card.Body>
+              <Card.Footer className="rnd-quote__footer bg-white text-right border-top-0">
+                <a className="btn btn-light mx-1" href={tweetUrl} target="_blank" rel="noopener noreferrer" title="Tweet this quote!"><FontAwesomeIcon icon={faTwitter} className="text-black-50" /></a>
+                <Button variant="light" className="mx-1 text-black-50" id="new-quote" onClick={this.getQuote}>New Quote</Button>
               </Card.Footer>
             </Card>
           </Col>
@@ -161,10 +157,10 @@ class QuoteComponent extends React.Component {
   useEffect(() => {
     console.log('useEffect');
     setState(getRandomQuote())
-    setRandomQuote()
+    autoChangeQuote()
   },[])
 
-  const setRandomQuote = () => {
+  const autoChangeQuote = () => {
     setInterval(() => {
       setState(getRandomQuote())
     },3000)

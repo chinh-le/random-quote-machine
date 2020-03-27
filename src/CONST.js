@@ -68,6 +68,6 @@ export const BG_COLORS = [
   'danger',
   'warning',
   'info',
-  'light',
+  // 'light',
   'dark',
 ];
