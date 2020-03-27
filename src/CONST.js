@@ -17,7 +17,7 @@ export const QUOTES = [
     },
     {
       quote: "The curious paradox is that when I accept myself just as I am, then I can change.",
-      autho: "― Carl R. Rogers, On Becoming a Person: A Therapist's View of Psychotherapy"
+      author: "― Carl R. Rogers, On Becoming a Person"
     },
     {
       quote: "He who fears he shall suffer, already suffers what he fears.",
