@@ -127,18 +127,18 @@ class QuoteComponent extends React.Component {
                 <Card.Text className="rnd-quote__text rnd-quote__text--icon-color mx-auto my-0"><FontAwesomeIcon icon={faQuoteLeft} /></Card.Text>
                   <Card.Title className="rnd-quote__title d-flex flex-row align-items-center mx-auto mb-0 text-dark">
                     <CSSTransition in={this.state.fade} timeout={500} className="rnd-quote__title--fade">
-                      <span>{this.state.quote.text}</span>
+                      <span id="text">{this.state.quote.text}</span>
                     </CSSTransition>
                   </Card.Title>
                 <Card.Text className="rnd-quote__text rnd-quote__text--icon-color mx-auto my-0"><FontAwesomeIcon icon={faQuoteRight} /></Card.Text>
                 <Card.Text className="rnd-quote__author rnd-quote__author--text-color mx-auto">
                   <CSSTransition in={this.state.fade} timeout={200} className="rnd-quote__author--fade">
-                    <span>{this.state.quote.author}</span>
+                    <span id="author">{this.state.quote.author}</span>
                   </CSSTransition>
                 </Card.Text>
               </Card.Body>
               <Card.Footer className="rnd-quote__footer bg-white text-right border-top-0">
-                <a className="btn btn-light mx-1" href={tweetUrl} target="_blank" rel="noopener noreferrer" title="Tweet this quote!"><FontAwesomeIcon icon={faTwitter} className="text-black-50" /></a>
+                <a className="btn btn-light mx-1" href={tweetUrl} target="_blank" rel="noopener noreferrer" title="Tweet this quote!" id="tweet-quote"><FontAwesomeIcon icon={faTwitter} className="text-black-50" /></a>
                 <Button variant="light" className="mx-1 text-black-50" id="new-quote" onClick={this.getQuote}>New Quote</Button>
               </Card.Footer>
             </Card>
