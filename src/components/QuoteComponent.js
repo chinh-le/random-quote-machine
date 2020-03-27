@@ -22,7 +22,9 @@ const getRandomQuote = () => {
   };
 };
 
-const getRandomColor = () => BG_COLORS[Math.floor(Math.random() * BG_COLORS.length)];
+const getRandomColor = () => {
+  return BG_COLORS[Math.floor(Math.random() * BG_COLORS.length)];
+};
 
 // class component
 class QuoteComponent extends React.Component {
