@@ -38,6 +38,7 @@ class QuoteComponent extends React.Component {
     this.intervalBg = null;
     this.timeoutBg = null;
     this.bgColor = getRandomColor();
+    // this.tweetUrl = 'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=';
     // this.wrapper = React.createRef();
   }
 
@@ -108,6 +109,7 @@ class QuoteComponent extends React.Component {
 
   render(){
     let containerBgColor = `alert-${this.bgColor}`;
+    const tweetUrl = `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${this.state.quote.text}`;
     return(
       // <div ref={this.wrapper}>
       <div>
@@ -139,8 +141,9 @@ class QuoteComponent extends React.Component {
                 </Card.Text>
               </Card.Footer>
               <Card.Footer className="rnd-quote__footer d-flex justify-content-center mx-auto bg-transparent border-0">
-                <Button variant="light" className="mx-1" id="tweet-quote"><FontAwesomeIcon icon={faTwitter} /></Button>
-                <Button variant="light" id="new-quote" onClick={this.getQuote}>New Quote</Button>
+                {/* <Button variant="light" className="mx-1" id="tweet-quote"><FontAwesomeIcon icon={faTwitter} /></Button> */}
+                <a className="btn btn-light mx-1" href={tweetUrl} target="_blank" title="Tweet this quote!"><FontAwesomeIcon icon={faTwitter} /></a>
+                <Button variant="light" className="mx-1" id="new-quote" onClick={this.getQuote}>New Quote</Button>
               </Card.Footer>
             </Card>
           </Col>
