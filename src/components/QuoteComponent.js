@@ -113,8 +113,8 @@ class QuoteComponent extends React.Component {
     let containerBgColor = `alert-${this.bgColor}`;
     const tweetUrl = `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${this.state.quote.text}`;
     return(
-      // <div ref={this.wrapper}>
       <div>
+        {/* <div ref={this.wrapper}> */}
         <GoogleFontLoader
           fonts={[
             {
