@@ -14,3 +14,29 @@
 .rnd-quote__footer{
     width: 90%;
 }
+
+// transition: fade
+.rnd-quote__title--fade,
+.rnd-quote__author--fade{
+    &.enter{
+        opacity: 0;
+    }
+    &.enter-active{
+        opacity: 1;
+        transition: opacity 500ms;
+    }
+    &.enter-done{
+        opacity: 1;
+    }
+    &.exit{
+        opacity: 1;
+    }
+    &.exit-active{
+        opacity: 0;
+        transition: opacity 300ms;
+    }
+    &.exit-done{
+        opacity: 0;
+    }
+}
+
