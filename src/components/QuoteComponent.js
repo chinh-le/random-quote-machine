@@ -13,7 +13,7 @@ const getRandomQuote = () => {
   const idx = Math.floor(Math.random() * QUOTES.length);
   // console.log(idx);
   return{
-    quote: QUOTES[idx].quote,
+    text: QUOTES[idx].text,
     author: QUOTES[idx].author
   };
 };
@@ -22,18 +22,33 @@ const getRandomQuote = () => {
 class QuoteComponent extends React.Component {
   constructor(props){
     super(props);
-    this.state = {};
-  };
+    this.state = {
+      quote: {}
+    };
+    this.interval = null;
+    this.getQuote = this.getQuote.bind(this);
+  }
 
   componentDidMount(){
-    this.setState(getRandomQuote())
-    this.setRandomQuote()
+    this.setState({
+        quote: getRandomQuote()
+    });
+    this.setRandomQuote();
   }
 
   setRandomQuote(){
-    setInterval(() => {
-      this.setState(getRandomQuote())
-    },3000)
+    this.interval = setInterval(() => {
+      this.setState({
+        quote: getRandomQuote()
+      });
+    },5000);
+  }
+
+  getQuote(){
+    clearInterval(this.interval);
+    this.setState({
+       quote: getRandomQuote()
+    });
   }
 
   render(){
@@ -51,16 +66,16 @@ class QuoteComponent extends React.Component {
             <Card.Body className="rnd-quote__body d-flex flex-column justify-content-center">
               <Card.Text className="rnd-quote__text mx-auto text-light m-0"><FontAwesomeIcon icon={faQuoteLeft} /></Card.Text>
               <Card.Title className="rnd-quote__title d-flex flex-row align-items-center mx-auto mb-0">
-                {this.state.quote}
+                {this.state.quote.text}
               </Card.Title>
               <Card.Text className="rnd-quote__text mx-auto text-right text-light"><FontAwesomeIcon icon={faQuoteRight} /></Card.Text>
             </Card.Body>
             <Card.Footer className="rnd-quote__footer mx-auto bg-transparent border-0">
-              <Card.Text className="d-flex flex-column align-items-end text-light">{this.state.author}</Card.Text>
+              <Card.Text className="d-flex flex-column align-items-end text-light">{this.state.quote.author}</Card.Text>
             </Card.Footer>
             <Card.Footer className="rnd-quote__footer d-flex justify-content-center mx-auto bg-transparent border-0">
                 <Button variant="light" className="mx-1" id="tweet-quote"><FontAwesomeIcon icon={faTwitter} /></Button>
-                <Button variant="light" id="new-quote">New Quote</Button>
+                <Button variant="light" id="new-quote" onClick={this.getQuote}>New Quote</Button>
             </Card.Footer>
         </Card>
       </div>
