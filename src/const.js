@@ -8,7 +8,7 @@ export const QUOTES = [
     author: "- Oscar Wilde"
   },
   {
-    text: "Good judgment comes from experience, and experience comes from bad judgment",
+    text: "Good judgment comes from experience, and experience comes from bad judgment.",
     author:"- Rita Mae Brown, Alma Mater"
   },
   {
