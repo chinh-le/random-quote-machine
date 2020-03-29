@@ -6,12 +6,12 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import GoogleFontLoader from 'react-google-font-loader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faQuoteRight, faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { CSSTransition } from 'react-transition-group';
+
+import QuoteBodyComponent from '../components/QuoteBodyComponent';
 
 import './QuoteComponent.scss';
-import { QUOTES, BG_COLORS } from '../CONST';
+import { QUOTES, BG_COLORS } from '../const';
 
 const getRandomQuote = () => {
   const idx = Math.floor(Math.random() * QUOTES.length);
@@ -126,20 +126,7 @@ class QuoteComponent extends React.Component {
         <Container fluid id="quote-box" className={containerBgColor}>
           <Col sm={9} md={7} lg={5} xl={4} className="m-auto">
             <Card bg="transparent" border="0" className="rnd-quote p-4">
-              <Card.Body className="rnd-quote__body d-flex flex-column justify-content-center bg-white py-4 rounded-top">
-                <Card.Text className="rnd-quote__text rnd-quote__text--icon-color mx-auto my-0"><FontAwesomeIcon icon={faQuoteLeft} /></Card.Text>
-                  <Card.Title className="rnd-quote__title d-flex flex-row align-items-center mx-auto mb-0 text-dark">
-                    <CSSTransition in={this.state.fade} timeout={500} className="rnd-quote__title--fade">
-                      <span id="text">{this.state.quote.text}</span>
-                    </CSSTransition>
-                  </Card.Title>
-                <Card.Text className="rnd-quote__text rnd-quote__text--icon-color mx-auto my-0"><FontAwesomeIcon icon={faQuoteRight} /></Card.Text>
-                <Card.Text className="rnd-quote__author rnd-quote__author--text-color mx-auto">
-                  <CSSTransition in={this.state.fade} timeout={200} className="rnd-quote__author--fade">
-                    <span id="author">{this.state.quote.author}</span>
-                  </CSSTransition>
-                </Card.Text>
-              </Card.Body>
+              <QuoteBodyComponent quote={this.state.quote} fade={this.state.fade} />
               <Card.Footer className="rnd-quote__footer bg-white text-right border-top-0">
                 <a className="btn btn-light mx-1" href={tweetUrl} target="_blank" rel="noopener noreferrer" title="Tweet this quote!" id="tweet-quote"><FontAwesomeIcon icon={faTwitter} className="text-black-50" /></a>
                 <Button variant="light" className="mx-1 text-black-50" id="new-quote" onClick={this.getQuote}>New Quote</Button>
