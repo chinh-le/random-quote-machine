@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import GoogleFontLoader from 'react-google-font-loader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 
@@ -112,14 +111,6 @@ class QuoteComponent extends React.Component {
     const tweetUrl = `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${this.state.quote.text}`;
     return(
       <div>
-        <GoogleFontLoader
-          fonts={[
-            {
-              font: 'Titillium Web',
-              weights: [400, '400i'],
-            },
-          ]}
-        />
         <Container fluid id="quote-box" className={containerBgColor}>
           <Col sm={9} md={7} lg={5} xl={4} className="m-auto">
             <Card bg="transparent" border="0" className="p-4">
