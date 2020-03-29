@@ -10,7 +10,6 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 import QuoteBodyComponent from '../components/QuoteBodyComponent';
 
-import './QuoteComponent.scss';
 import { QUOTES, BG_COLORS } from '../const';
 
 const getRandomQuote = () => {
@@ -41,7 +40,6 @@ class QuoteComponent extends React.Component {
     this.intervalBg = null;
     this.timeoutBg = null;
     this.bgColor = getRandomColor();
-    // this.wrapper = React.createRef();
   }
 
   componentDidMount(){
@@ -114,7 +112,6 @@ class QuoteComponent extends React.Component {
     const tweetUrl = `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${this.state.quote.text}`;
     return(
       <div>
-        {/* <div ref={this.wrapper}> */}
         <GoogleFontLoader
           fonts={[
             {
@@ -125,9 +122,9 @@ class QuoteComponent extends React.Component {
         />
         <Container fluid id="quote-box" className={containerBgColor}>
           <Col sm={9} md={7} lg={5} xl={4} className="m-auto">
-            <Card bg="transparent" border="0" className="rnd-quote p-4">
+            <Card bg="transparent" border="0" className="p-4">
               <QuoteBodyComponent quote={this.state.quote} fade={this.state.fade} />
-              <Card.Footer className="rnd-quote__footer bg-white text-right border-top-0">
+              <Card.Footer className="bg-white text-right border-top-0">
                 <a className="btn btn-light mx-1" href={tweetUrl} target="_blank" rel="noopener noreferrer" title="Tweet this quote!" id="tweet-quote"><FontAwesomeIcon icon={faTwitter} className="text-black-50" /></a>
                 <Button variant="light" className="mx-1 text-black-50" id="new-quote" onClick={this.getQuote}>New Quote</Button>
               </Card.Footer>

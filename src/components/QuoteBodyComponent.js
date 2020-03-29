@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuoteRight, faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
 import { CSSTransition } from 'react-transition-group';
 
+import './QuoteBodyComponent.scss';
 
 const QuoteBodyComponent = (props) => {
     return (
